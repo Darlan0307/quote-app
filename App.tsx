@@ -1,15 +1,58 @@
-import { StyleSheet, Text, View, StatusBar, SafeAreaView } from "react-native";
+import { StyleSheet, StatusBar, SafeAreaView, View, Text } from "react-native";
 import { colors } from "./src/styles/variables";
 import CurrentQuote from "./src/components/current-quote";
 import Graphic from "./src/components/graphic";
-import ListButtonFilters from "./src/components/list-button-filters";
+import ListCards from "./src/components/list-cards";
+import { useEffect, useState } from "react";
+import { QuoteHistory } from "./src/@types/quote-history";
 
 export default function App() {
+  const [quoteHistory, setQuoteHistory] = useState<QuoteHistory[]>([]);
+
+  async function getQuotes() {
+    try {
+      const response = await fetch(
+        `https://api.coincap.io/v2/assets/bitcoin/history?interval=d1`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer c5ec3078-40a8-406a-b090-0db1071cf07e`,
+          },
+        }
+      );
+      const data = await response.json();
+      const quotes = data.data.reverse();
+      setQuoteHistory(quotes);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getQuotes();
+  }, []);
+
+  const lastQuote = quoteHistory[0];
+
+  if (quoteHistory.length === 0) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 20 }}>Carregando...</Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      <CurrentQuote />
+      <CurrentQuote lastQuote={lastQuote} />
       <Graphic />
-      <ListButtonFilters />
+      <ListCards quoteHistory={quoteHistory} />
       <StatusBar backgroundColor={"#fff"} barStyle={"dark-content"} />
     </SafeAreaView>
   );

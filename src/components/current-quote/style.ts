@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    marginVertical: 50,
+    marginVertical: 40,
     marginHorizontal: "auto",
   },
   textPrimary: {
