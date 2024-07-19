@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, SafeAreaView } from "react-native";
+import { colors } from "./src/styles/variables";
+import CurrentQuote from "./src/components/current-quote";
+import Graphic from "./src/components/graphic";
+import ListButtonFilters from "./src/components/list-button-filters";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <CurrentQuote />
+      <Graphic />
+      <ListButtonFilters />
+      <StatusBar backgroundColor={"#fff"} barStyle={"dark-content"} />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: colors.blueDark,
   },
 });
