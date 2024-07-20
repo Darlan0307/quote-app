@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "app-bitcoin-quote",
-    "slug": "app-bitcoin-quote",
+    "name": "app-quote",
+    "slug": "app-quote",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,10 +18,14 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.darlandev.appquote",
+      "versionCode": 1
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "extra": {
+      "eas": {
+        "projectId": "1aec6d21-9d24-4d11-bf65-66c622b51d84"
+      }
     }
   }
 }
