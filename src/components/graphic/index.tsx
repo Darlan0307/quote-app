@@ -1,8 +1,18 @@
 import { View } from "react-native";
 import { styles } from "./style";
+import GraphicLineChart from "./line";
+import { QuoteHistory } from "../../@types/quote-history";
 
-const Graphic = () => {
-  return <View style={styles.container}></View>;
+type GraphicProps = {
+  quoteHistory: QuoteHistory[];
+};
+
+const Graphic = ({ quoteHistory }: GraphicProps) => {
+  return (
+    <View style={styles.container}>
+      <GraphicLineChart quoteHistory={quoteHistory} />
+    </View>
+  );
 };
 
 export default Graphic;

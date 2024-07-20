@@ -11,12 +11,12 @@ const ListCards = ({ quoteHistory }: ListCardsProps) => {
   let slicedQuoteHistory = [...quoteHistory];
 
   if (quoteHistory.length > 10) {
-    slicedQuoteHistory = slicedQuoteHistory.slice(0, 10);
+    slicedQuoteHistory = slicedQuoteHistory.slice(0, 7);
   }
 
   return (
     <>
-      <Text style={styles.subtitle}> Cotações dos últimos 10 dias</Text>
+      <Text style={styles.subtitle}> Cotações dos últimos 7 dias</Text>
       <FlatList
         showsVerticalScrollIndicator={false}
         style={styles.container}

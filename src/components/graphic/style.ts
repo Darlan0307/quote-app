@@ -3,10 +3,9 @@ import { colors } from "../../styles/variables";
 
 export const styles = StyleSheet.create({
   container: {
-    marginBottom: 20,
+    marginBottom: 30,
     marginHorizontal: "auto",
-    backgroundColor: colors.blueLight,
+    // backgroundColor: colors.blueLight,
     height: 200,
-    width: "90%",
   },
 });
